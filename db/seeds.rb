@@ -7,3 +7,16 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require 'csv'
+
+brands_file_path = "./db/brands.csv"
+categories_file_path = "./db/categories.csv"
+
+CSV.foreach(brands_file_path, headers: true) { |row|
+  Brand.find_or_create_by(name: row["name"])
+}
+
+CSV.foreach(categories_file_path, headers: true) { |row|
+  Category.find_or_create_by(name: row["name"])
+}

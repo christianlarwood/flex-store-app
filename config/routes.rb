@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :items
   resources :promotions, only: [:new, :create]
-  resources :cart, only [:show]
-  resources :cart_items, only [:create, :update, :destroy]
+  resources :cart, only: [:show]
+  resources :cart_items, only: [:create, :update, :destroy]
 end
