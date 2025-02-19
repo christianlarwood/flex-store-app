@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cart: one
+  item: one
+  promotion: one
+  price_cents: 1
+  quantity: 1
+  weight: 1
+
+two:
+  cart: two
+  item: two
+  promotion: two
+  price_cents: 1
+  quantity: 1
+  weight: 1

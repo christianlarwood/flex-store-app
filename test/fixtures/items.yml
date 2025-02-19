@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  price_cents: 1
+  unit_type: MyString
+  unit_quantity: 1
+  unit_of_measurement: MyString
+  category: one
+  brand: one
+
+two:
+  name: MyString
+  price_cents: 1
+  unit_type: MyString
+  unit_quantity: 1
+  unit_of_measurement: MyString
+  category: two
+  brand: two
