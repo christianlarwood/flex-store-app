@@ -22,3 +22,22 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Project Setup
+### Step 1: clone this repo
+```sh
+
+```
+### Step 2: install dependencies
+```sh
+bundle install
+```
+### Step 3: create & migrate the DB
+```sh
+rails db:create
+rails db:migrate
+```
+### Step X: seed Brand and Category data
+```sh
+rails db:seed
+```
