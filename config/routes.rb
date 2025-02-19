@@ -7,4 +7,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  resources :items
+  resources :promotions, only: [:new, :create]
+  resources :cart, only [:show]
+  resources :cart_items, only [:create, :update, :destroy]
 end
