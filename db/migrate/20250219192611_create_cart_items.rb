@@ -6,7 +6,7 @@ class CreateCartItems < ActiveRecord::Migration[7.1]
       t.references :promotion, null: false, foreign_key: true
       t.integer :price_cents
       t.integer :quantity
-      t.integer :weight
+      t.decimal :weight, precision: 6, scale: 2
 
       t.timestamps
     end
