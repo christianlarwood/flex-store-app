@@ -16,7 +16,7 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= item.name %></td>
-        <td>$<%= number_to_currency(item.price_cents / 100.0) %></td>
+        <td><%= number_to_currency(item.price_cents / 100.0) %></td>
         <td><%= "#{item.unit_quantity} #{item.unit_of_measurement}" %></td>
         <td><%= item.category.name %></td>
         <td><%= item.brand.name %></td>

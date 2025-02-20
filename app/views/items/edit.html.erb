@@ -1,2 +1,42 @@
-<h1>Items#edit</h1>
-<p>Find me in app/views/items/edit.html.erb</p>
+<h1>Edit Item</h1>
+
+<%= form_with model: @item, local: true do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :category_id, "Category" %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+
+  <div>
+    <%= f.label :brand_id, "Brand" %>
+    <%= f.collection_select :brand_id, Brand.all, :id, :name %>
+  </div>
+
+  <div>
+    <%= f.label :price_cents, "Price (in cents)" %>
+    <%= f.number_field :price_cents, min: 0 %>
+  </div>
+
+  <div>
+    <%= f.label :unit_type, "Unit Type" %>
+    <%= f.select :unit_type, [["Weight", "weight"], ["Quantity", "quantity"]] %>
+  </div>
+
+  <div>
+    <%= f.label :unit_quantity, "Enter Quantity or Weight Amount" %>
+    <%= f.number_field :unit_quantity %>
+  </div>
+
+  <div>
+    <%= f.label :unit_of_measurement, "Unit of Measurement" %>
+    <%= f.select :unit_of_measurement, %w(g kg oz lb each pack) %>
+  </div>
+
+  <%= f.submit "Save" %>
+<% end %>
+
+<%= link_to "Back to Items", items_path %>
