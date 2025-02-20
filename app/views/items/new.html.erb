@@ -7,13 +7,13 @@
   </div>
 
   <div>
-    <%= f.label :category, "Category" %>
-    <%= f.collection_select :category, Category.all, :id, :name %>
+    <%= f.label :category_id, "Category" %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
   </div>
 
   <div>
-    <%= f.label :brand, "Brand" %>
-    <%= f.collection_select :brand, Brand.all, :id, :name %>
+    <%= f.label :brand_id, "Brand" %>
+    <%= f.collection_select :brand_id, Brand.all, :id, :name %>
   </div>
 
   <div>

@@ -1,5 +1,6 @@
 <h1>Flex Store Items</h1>
 
+<%= link_to "Create new Item", new_item_path %>
 <table>
   <thead>
     <tr>
@@ -16,7 +17,7 @@
       <tr>
         <td><%= item.name %></td>
         <td>$<%= number_to_currency(item.price_cents / 100.0) %></td>
-        <td><%= "#{item.unit_size} #{item.unit_measurement}" %></td>
+        <td><%= "#{item.unit_quantity} #{item.unit_of_measurement}" %></td>
         <td><%= item.category.name %></td>
         <td><%= item.brand.name %></td>
         <td><%= link_to "Edit", edit_item_path(item) %></td>
@@ -24,5 +25,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to "Create new Item", new_item_path %>
