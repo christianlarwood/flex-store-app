@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_19_192611) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_20_165629) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +72,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_19_192611) do
     t.integer "weight_threshold"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "promotable_id", null: false
+    t.index ["promotable_id"], name: "index_promotions_on_promotable_id"
   end
 
   add_foreign_key "cart_items", "carts"
