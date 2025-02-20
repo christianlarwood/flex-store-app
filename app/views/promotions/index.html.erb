@@ -1,0 +1,33 @@
+<h1>Promotions</h1>
+
+<%= link_to "Create new Promotion", new_promotion_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Promotion Category</th>
+      <th>Promotion Type</th>
+      <th>Discount $</th>
+      <th>Discount %</th>
+      <th>X Quantity</th>
+      <th>Y Quantity</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @promotions.each do |promotion| %>
+      <tr>
+        <td><%= promotion.name %></td>
+        <td><%= promotion.promotion_type %></td>
+        <td><%= promotion.promotable_type %></td>
+        <td><%= number_to_currency((promotion.discount_cents || 0) / 100.0) %></td>
+        <td><%= number_to_percentage(promotion.discount_percentage || 0) %></td>
+        <td><%= promotion.x_quantity %></td>
+        <td><%= promotion.y_quantity %></td>
+        <td><%= promotion.start_date.to_time %></td>
+        <td><%= promotion.end_date.to_time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

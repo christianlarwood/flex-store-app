@@ -1,2 +1,62 @@
-<h1>Promotions#new</h1>
-<p>Find me in app/views/promotions/new.html.erb</p>
+<h1>Create a new promotion</h1>
+
+<%= form_with model: @promotion, local: true do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :promotion_type, "Category" %>
+    <%= f.select :promotion_type, [["Flat fee", "flat_fee"], ["Percentage", "percentage"], ["Buy X, Get Y", "buy_x_get_y"], ["Weight threshold", "weight_threshold"]] %>
+  </div>
+
+  <div>
+    <%= f.label :promotable_type, "Type" %>
+    <%= f.select :promotable_type, %w(Item Category) %>
+  </div>
+
+  <div>
+    <%= f.label :item_id, "Item (leave blank if selecting a Category)" %>
+    <%= f.collection_select :item_id, Item.all, :id, :name, { include_blank: "Select an item"} %>
+  </div>
+
+  <div>
+    <%= f.label :category_id, "Category (leave blank if selecting an Item)" %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, { include_blank: "Select a category"} %>
+  </div>
+
+  <div>
+    <%= f.label :discount_cents, "Discount (in cents)" %>
+    <%= f.number_field :discount_cents, min: 0 %>
+  </div>
+
+  <div>
+    <%= f.label :discount_percentage, "Discount % (50% = 50)" %>
+    <%= f.number_field :discount_percentage, min: 0, max: 100 %>
+  </div>
+
+  <div>
+    <%= f.label :x_quantity, "X Quantity" %>
+    <%= f.number_field :x_quantity, min: 1 %>
+  </div>
+
+  <div>
+    <%= f.label :y_quantity, "Y Quantity" %>
+    <%= f.number_field :y_quantity, min: 1 %>
+  </div>
+
+  <div>
+    <%= f.label :start_date, "Start Date" %>
+    <%= f.datetime_local_field :start_date %>
+  </div>
+
+  <div>
+    <%= f.label :end_date, "End Date" %>
+    <%= f.datetime_local_field :end_date %>
+  </div>
+
+  <%= f.submit "Create Promotion" %>
+<% end %>
+
+<%= link_to "Back to Promotions", promotions_path %>
