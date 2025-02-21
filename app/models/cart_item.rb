@@ -29,9 +29,9 @@ class CartItem < ApplicationRecord
   def calculate_promotion_discount(promotion)
     case promotion.promotion_type
     when "flat_fee"
-      promotion.discount_cents
+      promotion.discount_cents * self.quantity
     when "percentage"
-      (item.price_cents * (promotion.discount_percentage / 100.0)).round
+      (item.price_cents * (promotion.discount_percentage / 100.0)).round * self.quantity
     when "buy_x_get_y"
       buy_x_get_y_discount(promotion)
     when "weight_threshold"
