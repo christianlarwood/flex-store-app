@@ -2,7 +2,8 @@
 ## Project Setup
 ### Step 1: clone this repo
 ```sh
-
+git clone https://github.com/christianlarwood/flex-store-app.git
+cd flex-store-app
 ```
 ### Step 2: install dependencies
 ```sh
@@ -21,9 +22,9 @@ rails db:seed
 `http://localhost:3000`
 
 ## Routes
-"/" --> Flex Shop home, view & add available items to your cart, view your cart
-"/items" --> View and manage inventory
-"/promotions --> View and add new promotions
+- "/" --> Flex Shop home, view & add available items to your cart, view your cart
+- "/items" --> View and manage inventory
+- "/promotions --> View and add new promotions
 
 ## Project Requirements:
 ```sh
