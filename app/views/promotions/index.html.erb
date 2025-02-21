@@ -7,8 +7,10 @@
       <th>Name</th>
       <th>Promotion Category</th>
       <th>Promotion Type</th>
-      <th>Discount $</th>
-      <th>Discount %</th>
+      <th>Category or Item</th>
+      <th>Discount ($)</th>
+      <th>Discount (%)</th>
+      <th>Weight Threshold</th>
       <th>X Quantity</th>
       <th>Y Quantity</th>
       <th>Start Date</th>
@@ -21,8 +23,13 @@
         <td><%= promotion.name %></td>
         <td><%= promotion.promotion_type %></td>
         <td><%= promotion.promotable_type %></td>
+        <td><%= promotion.promotable.name%></td>
         <td><%= number_to_currency((promotion.discount_cents || 0) / 100.0) %></td>
-        <td><%= number_to_percentage(promotion.discount_percentage || 0) %></td>
+        <td><%= number_to_percentage(promotion.discount_percentage || 0, precision: 2) %></td>
+        <td><% if promotion.promotable_type == "Item" %>
+              <%= "#{promotion.weight_threshold} #{promotion.promotable.unit_of_measurement}" %>
+            <% end %>
+        </td>
         <td><%= promotion.x_quantity %></td>
         <td><%= promotion.y_quantity %></td>
         <td><%= promotion.start_date.to_time %></td>

@@ -47,6 +47,11 @@
   </div>
 
   <div>
+    <%= f.label :weight_threshold, "Minimum weight (number) for selected discount ($ or %)" %>
+    <%= f.number_field :weight_threshold, min: 0 %>
+  </div>
+
+  <div>
     <%= f.label :x_quantity, "X Quantity" %>
     <%= f.number_field :x_quantity, min: 1 %>
   </div>
