@@ -2,7 +2,7 @@ class CartItemsController < ApplicationController
   def create
     existing_cart_item = @cart.cart_items.find_by(item_id: cart_item_params[:item_id])
 
-    if existing_cart_item
+    saved = if existing_cart_item
       existing_cart_item.quantity += cart_item_params[:quantity].to_i
       existing_cart_item.price_cents = existing_cart_item.item.price_cents * existing_cart_item.quantity
       existing_cart_item.save
@@ -14,7 +14,7 @@ class CartItemsController < ApplicationController
       @cart_item.save
     end
 
-    if @cart_item&.save || existing_cart_item&.save
+    if saved
       redirect_to root_path
     else
       redirect_to root_path, status: :unprocessable_entity

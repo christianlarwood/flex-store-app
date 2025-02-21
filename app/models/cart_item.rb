@@ -3,8 +3,8 @@ class CartItem < ApplicationRecord
   belongs_to :item
   belongs_to :promotion, optional: true
 
-  before_save :apply_best_promotion
   before_save :set_weight_if_item_has_weight
+  before_save :apply_best_promotion
 
   validates :price_cents, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :quantity, numericality: { only_integer: true, greater_than: 0 }
