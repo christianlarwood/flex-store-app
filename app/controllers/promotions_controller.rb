@@ -13,9 +13,9 @@ class PromotionsController < ApplicationController
     @promotion = Promotion.new(filtered_params.merge(promotable_id: promotable_id))
 
     if @promotion.save
-      render promotions_path
+      redirect_to promotions_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

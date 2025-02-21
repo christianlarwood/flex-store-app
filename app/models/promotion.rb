@@ -11,4 +11,27 @@ class Promotion < ApplicationRecord
   validates :promotable_id, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validate :check_promotion_overlap
+  validate :check_start_date
+
+  private
+
+  def check_promotion_overlap
+    existing_promotion = Promotion.where(
+      promotable_type: promotable_type,
+      promotable_id: promotable_id
+    ).where(
+      "? > end_date", start_date
+    ).exists?
+
+    if existing_promotion
+      errors.add(:base, "A promotion already exists for this item or category during the selected timeframe")
+    end
+  end
+
+  def check_start_date
+    if start_date < DateTime.now
+      errors.add(:start_date, "must be today or later")
+    end
+  end
 end
