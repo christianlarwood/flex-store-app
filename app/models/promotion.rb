@@ -30,7 +30,7 @@ class Promotion < ApplicationRecord
   end
 
   def check_start_date
-    if start_date < DateTime.now
+    if start_date < Date.today
       errors.add(:start_date, "must be today or later")
     end
   end
